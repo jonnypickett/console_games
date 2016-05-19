@@ -1,9 +1,9 @@
-from utilities import clear
-from dungeon_game import DungeonGame
-from monster_attack_game import MonsterAttackGame
-from number_guessing_game import NumberGuessingGame
+from Games.dungeon_game import DungeonGame
+from Games.monster_attack_game import MonsterAttackGame
+from Games.number_guessing_game import NumberGuessingGame
+from Games.word_guessing_game import WordGuessingGame
 from player import Player
-from word_guessing_game import WordGuessingGame
+from utilities import clear_screen
 
 
 class GameManager:
@@ -43,7 +43,7 @@ class GameManager:
 
     def main(self):
         """Welcomes player to Console Games then calls choose_game"""
-        clear()
+        clear_screen()
         self.show_welcome()
         self.show_help()
         choice = self.choose_game()

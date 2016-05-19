@@ -1,3 +1,6 @@
+from utilities import clear_screen
+
+
 class Game:
     """Base Game class"""
     TITLE = "Base Game"
@@ -8,4 +11,5 @@ class Game:
 
     def start(self):
         """Start the game"""
+        clear_screen()
         print("Welcome to the {0.TITLE}, {0.player.name}!".format(self))

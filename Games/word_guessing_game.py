@@ -1,4 +1,4 @@
-from game import Game
+from Games.game import Game
 
 
 class WordGuessingGame(Game):
