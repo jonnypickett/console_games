@@ -53,10 +53,10 @@ class GameManager:
         """Set up game play"""
         self.player = Player()
 
-        self.dungeon_game = DungeonGame()
-        self.monster_attack_game = MonsterAttackGame()
-        self.number_guessing_game = NumberGuessingGame()
-        self.word_guessing_game = WordGuessingGame()
+        self.dungeon_game = DungeonGame(player=self.player)
+        self.monster_attack_game = MonsterAttackGame(player=self.player)
+        self.number_guessing_game = NumberGuessingGame(player=self.player)
+        self.word_guessing_game = WordGuessingGame(player=self.player)
         self.available_games.update(
             {self.dungeon_game.ID: self.dungeon_game.TITLE,
              self.monster_attack_game.ID: self.monster_attack_game.TITLE,
