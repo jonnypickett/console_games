@@ -3,11 +3,15 @@ from Games.monster_attack_game import MonsterAttackGame
 from Games.number_guessing_game import NumberGuessingGame
 from Games.word_guessing_game import WordGuessingGame
 from player import Player
+import sys
 from utilities import clear_screen
 
 
 class GameManager:
     """A class to manage player game choices"""
+    HELP_COMMAND = 'HELP'
+    MENU_COMMAND = 'MENU'
+    QUIT_COMMAND = 'QUIT'
     available_games = {}
     dungeon_game = None
     monster_attack_game = None
@@ -21,7 +25,7 @@ class GameManager:
 
     def choose_game(self):
         """Show games menu then calls get_choice"""
-        print("Which game would you like to play today?")
+        print("Which game would you like to play?")
         self.show_game_menu()
         return self.get_choice()
 
@@ -30,24 +34,41 @@ class GameManager:
         If choice is not an int, ask player to choose again.
         If choice is not an available game id, ask player to choose again.
         """
+        print("")
+        player_input = input("Enter the number for the game you'd like to play: ")
+
+        if player_input == self.QUIT_COMMAND:
+            print("Thank you for playing! Come back and play again real soon!")
+            sys.exit()
+        elif player_input == self.HELP_COMMAND:
+            self.show_help()
+            self.get_choice()
+        elif player_input == self.MENU_COMMAND:
+            self.show_game_menu()
+            self.get_choice()
+
         try:
-            choice = int(input("Enter the number for the game you'd like to play: "))
+            choice = int(player_input)
         except ValueError:
+            print("")
             print("You must enter a number.")
-            return self.get_choice()
+            self.get_choice()
         else:
             if not choice in self.available_games:
+                print("")
                 print("That's not one of the choices. Please choose one of the available games.")
-                return self.get_choice()
-            return choice
+                self.get_choice()
+            self.start_game(choice)
 
     def main(self):
         """Welcomes player to Console Games then calls choose_game"""
         clear_screen()
         self.show_welcome()
         self.show_help()
-        choice = self.choose_game()
-        self.start_game(choice)
+        print("")
+
+        while True:
+            self.choose_game()
 
     def setup(self):
         """Set up game play"""
@@ -65,24 +86,25 @@ class GameManager:
 
     def show_game_menu(self):
         """Prints out game menu from available games"""
+        print("")
         for id, game in self.available_games.items():
             print("{}. {}".format(id, game))
 
     def show_help(self):
         """Show help menu"""
-        print("Help menu stuff.")
+        print("")
+        print("Enter HELP to see this info, MENU to see the game menu, and QUIT to quit.")
 
     def show_welcome(self):
         """Display welcome message"""
         print("Welcome to Console Games, {}!".format(self.player.name))
         print("""
-        There are a few games to choose from,
-        and we're always adding more games,
-        so remember to come back and play regularly!
-        """)
+There are a few games to choose from,
+and we're always adding more games,
+so remember to come back and play regularly!""")
 
     def start_game(self, choice):
-        """Start game of choice. If player choice isn't in available game choices,
+        """Start game of choice. If player input isn't in available game choices,
         have player choose again
         """
         if self.dungeon_game.ID == choice:
