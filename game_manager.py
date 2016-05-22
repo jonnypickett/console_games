@@ -1,10 +1,10 @@
 from Games.dungeon_game import DungeonGame
 from Games.monster_attack_game import MonsterAttackGame
 from Games.number_guessing_game import NumberGuessingGame
-from Games.word_guessing_game import WordGuessingGame
 from player import Player
 import sys
-from utilities import clear_screen
+from Games.word_guessing_game import WordGuessingGame
+import utilities
 
 
 class GameManager:
@@ -62,7 +62,7 @@ class GameManager:
 
     def main(self):
         """Welcomes player to Console Games then calls choose_game"""
-        clear_screen()
+        utilities.clear_screen()
         self.show_welcome()
         self.show_help()
         print("")
