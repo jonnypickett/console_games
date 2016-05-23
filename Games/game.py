@@ -13,6 +13,9 @@ class Game:
         for key, value in kwargs.items():
             setattr(self, key, value)
 
+    def cleanup(self):
+        """Handle game clean up."""
+
     def play_again_prompt(self):
         """Ask player if they'd like to play the game again.
         If yes, start the game again.
@@ -21,6 +24,7 @@ class Game:
         play_again = input("Do you want to play again? Y/n ")
         if play_again.lower() != 'n':
             print("{0.PLAY_AGAIN_RESPONSE}".format(self))
+            self.cleanup()
             self.start()
         else:
             print("{0.QUIT_RESPONSE}".format(self))
