@@ -1,5 +1,6 @@
 from Games.dungeon_game import DungeonGame
 from Games.monster_attack_game import MonsterAttackGame
+from Games.math_quiz_game import MathQuizGame
 from Games.number_guessing_game import NumberGuessingGame
 from player import Player
 import sys
@@ -15,6 +16,7 @@ class GameManager:
     available_games = {}
     dungeon_game = None
     monster_attack_game = None
+    math_quiz_game = None
     number_guessing_game = None
     word_guessing_game = None
 
@@ -76,11 +78,13 @@ class GameManager:
 
         self.dungeon_game = DungeonGame(player=self.player)
         self.monster_attack_game = MonsterAttackGame(player=self.player)
+        self.math_quiz_game = MathQuizGame(player=self.player)
         self.number_guessing_game = NumberGuessingGame(player=self.player)
         self.word_guessing_game = WordGuessingGame(player=self.player)
         self.available_games.update(
             {self.dungeon_game.ID: self.dungeon_game.TITLE,
              self.monster_attack_game.ID: self.monster_attack_game.TITLE,
+             self.math_quiz_game.ID: self.math_quiz_game.TITLE,
              self.number_guessing_game.ID: self.number_guessing_game.TITLE,
              self.word_guessing_game.ID: self.word_guessing_game.TITLE})
 
@@ -111,6 +115,8 @@ so remember to come back and play regularly!""")
             self.dungeon_game.start()
         elif self.monster_attack_game.ID == choice:
             self.monster_attack_game.start()
+        elif self.math_quiz_game.ID == choice:
+            self.math_quiz_game.start()
         elif self.number_guessing_game.ID == choice:
             self.number_guessing_game.start()
         elif self.word_guessing_game.ID == choice:
