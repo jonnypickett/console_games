@@ -1,1 +1,1 @@
-Play some simple command line games!
+Play some simple command line games! Dungeon, Math Quiz, Monster Attack, Number Guessing, and Word Guessing.
