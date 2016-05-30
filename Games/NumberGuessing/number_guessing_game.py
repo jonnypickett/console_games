@@ -1,5 +1,6 @@
-from Games.game import Game
 import random
+
+from Games.game import Game
 import utilities
 
 
@@ -8,9 +9,9 @@ class NumberGuessingGame(Game):
     ID = 3
     TITLE = "Number Guessing Game"
     DIFFICULTIES = {
-        'e': {'guesses_allowed': 8, 'max_number': 10, 'min_number': 1},
-        'm': {'guesses_allowed': 5, 'max_number': 20, 'min_number': 1},
-        'h': {'guesses_allowed': 2, 'max_number': 50, 'min_number': 1},
+        'e': {'guesses_allowed': 5, 'max_number': 10, 'min_number': 1},
+        'm': {'guesses_allowed': 4, 'max_number': 20, 'min_number': 1},
+        'h': {'guesses_allowed': 3, 'max_number': 50, 'min_number': 1},
     }
     game_difficulty = None
     guess = None
@@ -28,16 +29,6 @@ class NumberGuessingGame(Game):
         """Get player guess"""
         self.guess = input("Guess a number between {0.min_number} and {0.max_number}: ".format(self))
 
-    def set_difficulty(self):
-        """Set the game difficulty"""
-        difficulty = input("Would you like this to be [E]asy, [M]edium, or [H]ard? ").lower()
-
-        if not difficulty in self.DIFFICULTIES:
-            print("I didn't quite get that. Let's try again.")
-            self.set_difficulty()
-
-        self.game_difficulty = difficulty
-
     def setup(self):
         """Set up the game"""
         self.set_difficulty()
@@ -48,9 +39,9 @@ class NumberGuessingGame(Game):
 
     def start(self):
         """Start and manage the game."""
-        super(NumberGuessingGame, self).start()
+        super().start()
         utilities.clear_screen()
-        print("Welcome to the {0.TITLE}!".format(self))
+        self.show_welcome()
         self.setup()
         print("I'm thinking of a number between {0.min_number} and {0.max_number}.".format(self))
         print("Can you guess what it is with {0.guesses_allowed} guesses?".format(self))

@@ -1,4 +1,4 @@
-from Characters.monster import Monster
+from Games.MonsterAttack.Characters.monster import Monster
 
 
 class Troll(Monster):

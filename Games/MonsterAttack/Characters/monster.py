@@ -1,5 +1,5 @@
-from Characters.combat import Combat
 import random
+from Games.MonsterAttack.Characters.combat import Combat
 
 
 class Monster(Combat):

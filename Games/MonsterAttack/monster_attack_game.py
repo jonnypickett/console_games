@@ -1,8 +1,8 @@
-from Characters.character import Character
-from Characters.dragon import Dragon
+from Games.MonsterAttack.Characters.character import Character
+from Games.MonsterAttack.Characters.dragon import Dragon
+from Games.MonsterAttack.Characters.troll import Troll
+from Games.MonsterAttack.Characters.goblin import Goblin
 from Games.game import Game
-from Characters.goblin import Goblin
-from Characters.troll import Troll
 import utilities
 
 
@@ -81,7 +81,7 @@ class MonsterAttackGame(Game):
 
     def start(self):
         """Begin the game."""
-        super(MonsterAttackGame, self).start()
+        super().start()
         self.setup()
         print(self.player.character)
 
