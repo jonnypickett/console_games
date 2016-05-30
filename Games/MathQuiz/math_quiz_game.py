@@ -1,11 +1,11 @@
 import datetime
 import random
 
-from Questions.add import Add
-from Questions.divide import Divide
+from Games.MathQuiz.Questions.add import Add
+from Games.MathQuiz.Questions.multiply import Multiply
+from Games.MathQuiz.Questions.subtract import Subtract
 from Games.game import Game
-from Questions.multiply import Multiply
-from Questions.subtract import Subtract
+import utilities
 
 
 class MathQuizGame(Game):
@@ -43,16 +43,6 @@ class MathQuizGame(Game):
         self.answers = []
         self.questions = []
 
-    def set_difficulty(self):
-        """Set the game difficulty"""
-        difficulty = input("Would you like this to be [E]asy, [M]edium, or [H]ard? ").lower()
-
-        if not difficulty in self.DIFFICULTIES:
-            print("I didn't quite get that. Let's try again.")
-            self.set_difficulty()
-
-        self.game_difficulty = difficulty
-
     def setup(self):
         """Generate 10 random questions and add them to questions."""
         self.set_difficulty()
@@ -67,8 +57,9 @@ class MathQuizGame(Game):
 
     def start(self):
         """Begin the game."""
-        super(MathQuizGame, self).start()
-        print("Welcome to the {0.TITLE}!".format(self))
+        super().start()
+        utilities.clear_screen()
+        self.show_welcome()
         self.setup()
         print("How many questions can you get right out of {}?".format(len(self.questions)))
         print("The clock is ticking, so you better hurry!")

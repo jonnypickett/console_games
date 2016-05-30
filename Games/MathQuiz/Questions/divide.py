@@ -1,4 +1,4 @@
-from Questions.question import Question
+from Games.MathQuiz.Questions.question import Question
 
 
 class Divide(Question):

@@ -6,6 +6,11 @@ class Game:
     TITLE = "Base Game"
     PLAY_AGAIN_RESPONSE = "Great! Have fun!"
     QUIT_RESPONSE = "No worries. Thanks for playing!"
+    DIFFICULTIES = {
+        'e',
+        'm',
+        'h',
+    }
     player = None
     playing = False
 
@@ -36,6 +41,20 @@ class Game:
         print(
             "Welcome back. I hope you had a great time playing {0.TITLE}. Would you like to play another game?".format(
                 self))
+
+    def set_difficulty(self):
+        """Set the game difficulty"""
+        difficulty = input("Would you like this to be [E]asy, [M]edium, or [H]ard? ").lower()
+
+        if not difficulty in self.DIFFICULTIES:
+            print("I didn't quite get that. Let's try again.")
+            self.set_difficulty()
+        else:
+            self.game_difficulty = difficulty
+
+    def show_welcome(self):
+        """Show welcome message."""
+        print("Welcome to the {0.TITLE}!".format(self))
 
     def start(self):
         """Start the game"""

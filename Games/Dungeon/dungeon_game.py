@@ -81,7 +81,7 @@ class DungeonGame(Game):
 
     def start(self):
         """Begin the game."""
-        super(DungeonGame, self).start()
+        super().start()
         self.set_locations()
         logging.info("monster: {}; door: {}; player: {}".format(self.monster, self.door, self.player))
         utilities.clear_screen()

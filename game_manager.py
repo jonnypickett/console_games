@@ -1,11 +1,12 @@
-from Games.dungeon_game import DungeonGame
-from Games.monster_attack_game import MonsterAttackGame
-from Games.math_quiz_game import MathQuizGame
-from Games.number_guessing_game import NumberGuessingGame
-from player import Player
 import sys
-from Games.word_guessing_game import WordGuessingGame
+
 import utilities
+from Games.Dungeon.dungeon_game import DungeonGame
+from Games.MathQuiz.math_quiz_game import MathQuizGame
+from Games.MonsterAttack.monster_attack_game import MonsterAttackGame
+from Games.NumberGuessing.number_guessing_game import NumberGuessingGame
+from Games.WordGuessing.word_guessing_game import WordGuessingGame
+from player import Player
 
 
 class GameManager:
