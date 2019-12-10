@@ -1,1 +1,2 @@
 Play some simple command line games! Dungeon, Math Quiz, Monster Attack, Number Guessing, and Word Guessing.
+[![Run on Repl.it](https://repl.it/badge/github/jonnypickett/console_games)](https://repl.it/github/jonnypickett/console_games)
